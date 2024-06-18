@@ -2,13 +2,16 @@
 #include <threadLvgl.h> 
 #include <cstdio> 
 
+// Permet de définir les broches RX et TX
 #define RX_PIN D1 
 #define TX_PIN D0 
 
+// Initialiser la connexion série pour le scanner de codes-barres ainsi que le thread pour la bibliothèque LVGL
 BufferedSerial barcodeScanner(RX_PIN, TX_PIN, 9600); 
 ThreadLvgl threadLvgl(30); 
 lv_obj_t *list; 
 
+// Gestionnaire d'événements pour le bouton de scanner
 void scanner_button_event_handler(lv_event_t *e) { 
     char buffer[128]; 
     memset(buffer, 0, sizeof(buffer)); 
